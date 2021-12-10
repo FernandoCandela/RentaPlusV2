@@ -1,7 +1,10 @@
 package pe.edu.ulima.pm.renta.model
 
+import android.net.Uri
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
 
 class InmuebleManager() {
     private val dbFirebase = Firebase.firestore
@@ -170,8 +173,9 @@ class InmuebleManager() {
             .get()
             .addOnSuccessListener { res ->
                 if (res.size()>0){
-                    res.forEach{item ->
-                        dbFirebase.collection("arrendatario").document(item.id).update("activo",false)
+                    res.forEach { item ->
+                        dbFirebase.collection("arrendatario").document(item.id)
+                            .update("activo", false)
                     }
                 }
                 callbackOK(true)
@@ -180,5 +184,21 @@ class InmuebleManager() {
                 callbackError(it.message!!)
             }
 
+    }
+
+    private fun imageUpload(
+        mUri: Uri, pathReference: String, id: String, callbackOK: (String) -> Unit,
+        callbackError: (String) -> Unit
+    ) {
+        val folder: StorageReference = FirebaseStorage.getInstance().reference.child(pathReference)
+        val fileName: StorageReference = folder.child("img$id")
+
+        fileName.putFile(mUri).addOnSuccessListener {
+            fileName.downloadUrl.addOnSuccessListener { uri ->
+                callbackOK(uri.toString())
+            }
+        }.addOnFailureListener {
+            callbackError(it.message!!)
+        }
     }
 }
