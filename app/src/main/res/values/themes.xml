@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.RentaPlus" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Theme.Renta" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
@@ -28,12 +28,12 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="Theme.RentaPlus.NoActionBar">
+    <style name="Theme.Renta.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="Theme.RentaPlus.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.Renta.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <style name="Theme.RentaPlus.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="Theme.Renta.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>
